@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <property>
+    <name>hive.metastore.uris</name>
+    <value>thrift://master:9083</value>
+    <description>URI for client to contact metastore server</description>
+  </property>
+
+  <!-- Metastore DB as MySQL -->
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://metastore:3306/hive_metastore?createDatabaseIfNotExist=true&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</value>
+    <description>JDBC connection URL for metastore database</description>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>com.mysql.cj.jdbc.Driver</value>
+    <description>JDBC driver class name for metastore database</description>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>hive</value>
+    <description>Username to connect to metastore database</description>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>hive</value>
+    <description>Password for metastore database user</description>
+  </property>
+  <!-- end of Metastore DB config -->
+
+  <!-- Hive warehouse directory -->
+  <property>
+    <name>hive.metastore.warehouse.dir</name>
+    <value>/user/hive/warehouse</value>
+  </property>
+
+  <!-- Use PostgreSQL dialect -->
+  <property>
+    <name>datanucleus.schema.autoCreateTables</name>
+    <value>true</value>
+  </property>
+
+</configuration>

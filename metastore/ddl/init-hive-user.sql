@@ -1,0 +1,2 @@
+ALTER USER 'hive'@'%' IDENTIFIED BY 'hive';
+FLUSH PRIVILEGES;

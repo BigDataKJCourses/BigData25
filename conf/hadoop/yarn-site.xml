@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<configuration>
+
+  <!-- Hostname ResourceManagera -->
+  <property>
+    <name>yarn.resourcemanager.hostname</name>
+    <value>master</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.webapp.address</name>
+    <value>0.0.0.0:${NM_WEBAPP_PORT}</value>
+  </property>
+
+  <!-- Dozwolone zmienne środowiskowe -->
+  <property>
+    <name>yarn.nodemanager.env-whitelist</name>
+    <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.local-dirs</name>
+    <value>/tmp/hadoop-hadoop/nm-local-dir</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.log-dirs</name>
+    <value>/tmp/hadoop-hadoop/nm-logs</value>
+  </property>
+
+  <!-- UI ResourceManagera -->
+  <property>
+    <name>yarn.resourcemanager.webapp.address</name>
+    <value>master:8088</value>
+  </property>
+
+  <!-- Historia aplikacji YARN (MapReduce) -->
+  <property>
+    <name>yarn.application-history.enabled</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>yarn.application-history.address</name>
+    <value>master:19888</value>
+  </property>
+
+  <!--Resources per NodeManager (i.e., per worker) -->
+  <property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>8192</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.maximum-allocation-mb</name>
+    <value>8192</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.resource.cpu-vcores</name>
+    <value>4</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.maximum-allocation-vcores</name>
+    <value>4</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.minimum-allocation-mb</name>
+    <value>512</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.minimum-allocation-vcores</name>
+    <value>1</value>
+  </property>
+
+  <!--Application Timeline Server-->
+  <property>
+    <name>yarn.timeline-service.enabled</name>
+    <value>true</value>
+    <description>Indicate to clients whether Timeline service is enabled or not.
+    If enabled, the TimelineClient library used by end-users will post entities
+    and events to the Timeline server.</description>
+  </property>
+
+  <property>
+    <name>yarn.timeline-service.webapp.address</name>
+    <value>master:8188</value>
+  </property>
+
+  <property>
+    <name>yarn.timeline-service.hostname</name>
+    <value>master</value>
+    <description>The hostname of the Timeline service web application.</description>
+  </property>
+
+  <property>
+    <name>yarn.timeline-service.http-cross-origin.enabled</name>
+    <value>true</value>
+    <description>Enables cross-origin support (CORS) for web services where
+    cross-origin web response headers are needed. For example, javascript making
+    a web services request to the timeline server.</description>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.system-metrics-publisher.enabled</name>
+    <value>true</value>
+    <description>Publish YARN information to Timeline Server</description>
+  </property>
+
+  <!-- Usługa shuffle dla MapReduce i Sparka-->
+  <property>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce_shuffle,spark_shuffle</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.aux-services.spark_shuffle.class</name>
+    <value>org.apache.spark.network.yarn.YarnShuffleService</value>
+  </property>
+
+</configuration>
+
+

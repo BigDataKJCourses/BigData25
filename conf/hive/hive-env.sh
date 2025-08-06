@@ -1,0 +1,1 @@
+export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$(echo /opt/tez/*.jar | tr ' ' ':')

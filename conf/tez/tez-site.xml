@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <property>
+    <name>tez.am.resource.memory.mb</name>
+    <value>2048</value>
+  </property>
+
+  <property>
+    <name>tez.am.resource.cpu.vcores</name>
+    <value>1</value>
+  </property>
+
+  <property>
+    <name>tez.task.resource.memory.mb</name>
+    <value>1024</value>
+  </property>
+
+  <property>
+    <name>tez.task.resource.cpu.vcores</name>
+    <value>1</value>
+  </property>
+
+  <property>
+    <name>tez.am.launch.cmd-opts</name>
+    <value>-Xmx1536m</value> <!-- ok. 75% of AM memory -->
+  </property>
+
+  <property>
+    <name>tez.lib.uris</name>
+    <value>file:///opt/tez/,file:///opt/tez/lib/</value> <!--,file:///opt/tez/lib-->
+  </property>
+
+  <property>
+    <name>tez.use.cluster.hadoop-libs</name>
+    <value>true</value>
+  </property>
+
+  <!--Setting up Tez for the Tez UI-->
+  <property>
+    <name>tez.history.logging.service.class</name>
+    <value>org.apache.tez.dag.history.logging.ats.ATSHistoryLoggingService</value>
+    <description>Enable Tez to use the Timeline Server for History Logging</description>
+  </property>
+
+  <property>
+    <name>tez.tez-ui.history-url.base</name>
+    <value>http://master:9999/</value>
+    <description>URL for where the Tez UI is hosted</description>
+  </property>
+
+</configuration>

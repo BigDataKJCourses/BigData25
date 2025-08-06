@@ -1,0 +1,27 @@
+Copyright 2025 Krzysztof Jankiewicz
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to use,
+copy, modify, merge, publish, and distribute the Software, including for commercial use,
+subject to the following conditions:
+
+1. Attribution must be given to the original author by linking to the GitHub repository:
+   https://github.com/BigDataKJCourses/BigData25
+
+2. This Software may not be sold, included in paid products, or distributed as part of
+   commercial services that charge for access to the Software itself.
+
+3. The above copyright notice and this permission notice shall be included in all copies or
+   substantial portions of the Software.
+
+4. This Software may include scripts or instructions to download third-party components
+   (such as MySQL JDBC drivers, Apache Hadoop, Apache Tez, or other open source software).
+   Such third-party components are **not** included in this Software
+   and are subject to their own licenses. Users are responsible for complying with the
+   license terms of all third-party components.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
+AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

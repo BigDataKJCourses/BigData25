@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <!-- Metastore connection settings -->
+  <property>
+    <name>hive.metastore.uris</name>
+    <value>thrift://master:9083</value>
+    <description>URI for client to contact metastore server</description>
+  </property>
+
+  <!-- Metastore DB as MySQL -->
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://metastore:3306/hive_metastore?createDatabaseIfNotExist=true&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</value>
+    <description>JDBC connection URL for metastore database</description>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>com.mysql.cj.jdbc.Driver</value>
+    <description>JDBC driver class name for metastore database</description>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>hive</value>
+    <description>Username to connect to metastore database</description>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>hive</value>
+    <description>Password for metastore database user</description>
+  </property>
+  <!-- end of Metastore DB config -->
+
+  <property>
+    <name>hive.metastore.event.db.notification.api.auth</name>
+    <value>false</value>
+    <description>
+      Disable authorization against metastore database notification APIs.
+    </description>
+  </property>
+
+  <!-- Hive CLI settings -->
+  <property>
+    <name>hive.cli.print.header</name>
+    <value>true</value>
+    <description>Print column names in CLI query output</description>
+  </property>
+
+  <!-- HiveServer2 settings -->
+  <property>
+    <name>hive.server2.thrift.bind.host</name>
+    <value>0.0.0.0</value>
+    <description>Bind address for HiveServer2 Thrift service (listen on all interfaces)</description>
+  </property>
+
+  <!-- Resources -->
+  <property>
+    <name>hive.tez.container.size</name>
+    <value>1024</value>
+    <description>Rozmiar kontenera YARN używanego przez Tez (w MB)</description>
+  </property>
+
+  <property>
+    <name>hive.tez.java.opts</name>
+    <value>-Xmx768m</value>
+    <description>Opcje JVM dla kontenerów Tez</description>
+  </property>
+  
+  <property>
+    <name>hive.tez.cpu.vcores</name>
+    <value>1</value>
+    <description>
+      By default Tez will ask for however many cpus map-reduce is configured to use per container.
+      This can be used to overwrite.
+    </description>
+  </property>
+
+  <!-- configs for Hive WebServer -->
+  <property>
+    <name>hive.server2.webui.explain.output</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.server2.historic.operation.log.enabled</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.server2.webui.max.historic.queries</name>
+    <value>10</value>
+  </property>
+
+  <!-- Compaction -->
+  <property>
+    <name>hive.compactor.initiator.on</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.compactor.worker.threads</name>
+    <value>1</value>
+  </property>
+
+  <property>
+    <name>hive.support.concurrency</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.txn.manager</name>
+    <value>org.apache.hadoop.hive.ql.lockmgr.DbTxnManager</value>
+  </property>
+  
+  <property>
+    <name>hive.enforce.bucketing</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.exec.dynamic.partition.mode</name>
+    <value>nonstrict</value>
+  </property>
+
+</configuration>
