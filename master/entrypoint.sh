@@ -145,7 +145,7 @@ rm -rf /home/hadoop/.local/share/jupyter/runtime/* 2>/dev/null || true
 rm -rf /home/hadoop/.ipython/profile_default/security/* 2>/dev/null || true
 
 echo "[MASTER] Startuję JupyterLab..."
-jupyter lab --notebook-dir=/home/hadoop/notebooks --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' > /tmp/jupyter.log 2>&1 &
+jupyter lab --notebook-dir=/home/hadoop/notebooks --ip=0.0.0.0 --port=8888 --no-browser --allow-root --IdentityProvider.token='' > /tmp/jupyter.log 2>&1 &
 
 echo "[MASTER] Wszystkie usługi uruchomione."
 

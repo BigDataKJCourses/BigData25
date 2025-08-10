@@ -1,4 +1,4 @@
-FROM hadoop-hive-spark-worker:latest
+FROM bigdata25-worker:latest
 
 USER root
 
