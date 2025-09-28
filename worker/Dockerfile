@@ -54,7 +54,7 @@ WORKDIR /home/hadoop
 ENV JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
 
 # --- Hadoop ---
-ARG HADOOP_VERSION=3.4.1
+ARG HADOOP_VERSION=3.4.2
 ARG HADOOP_URL=https://downloads.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz
 ENV HADOOP_HOME=/opt/hadoop
 
@@ -110,8 +110,8 @@ ENV PATH=$TEZ_HOME/bin:$PATH
 # ENV HADOOP_CLASSPATH="$TEZ_HOME/*"
 
 # --- Spark ---
-ARG SPARK_VERSION=4.0.0
-ARG SPARK_URL=https://downloads.apache.org/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz
+ARG SPARK_VERSION=4.0.1
+ARG SPARK_URL=https://dlcdn.apache.org/spark/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz
 ENV SPARK_HOME=/opt/spark
 
 USER root
