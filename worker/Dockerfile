@@ -53,17 +53,23 @@ WORKDIR /home/hadoop
 
 ENV JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
 
-# --- Hadoop --- pozostawiamy 3.4.1 ze względu na bogatsze zależności, które tam są dostępne
-ARG HADOOP_VERSION=3.4.1
-ARG HADOOP_URL=https://downloads.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz
+# --- Hadoop --- 
+ARG HADOOP_VERSION=3.4.2
+ARG HADOOP_BASE_URL=https://downloads.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}
 ENV HADOOP_HOME=/opt/hadoop
 
 USER root
 RUN mkdir -p $HADOOP_HOME && \
     chown $USERNAME:$GROUPNAME $HADOOP_HOME && \
-    curl -fsSL $HADOOP_URL -o /tmp/hadoop.tar.gz && \
-    tar -xf /tmp/hadoop.tar.gz -C $HADOOP_HOME --strip-components=1 && \
-    rm /tmp/hadoop.tar.gz && \
+    curl -fsSL ${HADOOP_BASE_URL}/hadoop-${HADOOP_VERSION}.tar.gz -o /tmp/hadoop.tar.gz || \
+    curl -fsSL ${HADOOP_BASE_URL}/hadoop-${HADOOP_VERSION}.tar -o /tmp/hadoop.tar && \
+    if [ -f /tmp/hadoop.tar.gz ]; then \
+        tar -xf /tmp/hadoop.tar.gz -C $HADOOP_HOME --strip-components=1; \
+        rm /tmp/hadoop.tar.gz; \
+    else \
+        tar -xf /tmp/hadoop.tar -C $HADOOP_HOME --strip-components=1; \
+        rm /tmp/hadoop.tar; \
+    fi && \
     chown -R $USERNAME:$GROUPNAME $HADOOP_HOME
 
 USER $USERNAME
