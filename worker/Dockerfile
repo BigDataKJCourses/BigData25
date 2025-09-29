@@ -117,7 +117,7 @@ ENV PATH=$TEZ_HOME/bin:$PATH
 
 # --- Spark ---
 ARG SPARK_VERSION=4.0.1
-ARG SPARK_URL=https://dlcdn.apache.org/spark/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz
+ARG SPARK_URL=https://dlcdn.apache.org/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz
 ENV SPARK_HOME=/opt/spark
 
 USER root
