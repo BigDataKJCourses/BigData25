@@ -83,6 +83,7 @@ services:
       SPARK_LOCAL_IP: 172.28.1.3
       SPARK_LOCAL_HOSTNAME: worker1
       HADOOP_CONF_DIR: /etc/hadoop/conf
+      HIVE_CONF_DIR: /etc/hive/conf
       TEZ_CONF_DIR: /etc/tez/conf
       NM_WEBAPP_PORT: 8042
       DATANODE_HTTP_PORT: 9864
