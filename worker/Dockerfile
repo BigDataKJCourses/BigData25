@@ -54,7 +54,7 @@ WORKDIR /home/hadoop
 ENV JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
 
 # --- Hadoop --- 
-ARG HADOOP_VERSION=3.4.2
+ARG HADOOP_VERSION=3.4.1
 ARG HADOOP_BASE_URL=https://downloads.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}
 ENV HADOOP_HOME=/opt/hadoop
 
