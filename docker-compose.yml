@@ -87,6 +87,7 @@ services:
       TEZ_CONF_DIR: /etc/tez/conf
       NM_WEBAPP_PORT: 8042
       DATANODE_HTTP_PORT: 9864
+      JUPYTER_NOTEBOOK_DIR: /home/hadoop/notebooks/jupyter
     ports:
       - "8042:8042"
       - "9864:9864"
@@ -130,6 +131,44 @@ services:
     networks:
       sparknet:
         ipv4_address: 172.28.1.4
+
+  zeppelin:
+    profiles:
+      - zeppelin
+    build:
+      context: ./zeppelin
+      dockerfile: Dockerfile
+    image: bigdata25-zeppelin:latest
+    hostname: zeppelin
+
+    ports:
+      - "9090:8080" # Dostęp do UI Zeppelina pod adresem http://localhost:9090
+      - "4041:4040" # Spark Driver UI
+      
+    volumes:
+      - ./conf/hadoop:/etc/hadoop/conf:ro
+      - ./conf/hive:/etc/hive/conf:ro 
+      - ./work/notebooks/zeppelin:/home/hadoop/notebook:rw
+      
+    environment:
+      HADOOP_CONF_DIR: /etc/hadoop/conf
+      HIVE_CONF_DIR: /etc/hive/conf
+      TEZ_CONF_DIR: /etc/tez/conf
+      
+      ZEPPELIN_SPARK_MASTER: yarn
+      ZEPPELIN_ADDR: 0.0.0.0
+      ZEPPELIN_NOTEBOOK_DIR: /home/hadoop/notebook
+      
+    depends_on:
+      - master  
+      - metastore
+    
+    entrypoint: []
+      
+    restart: no
+    networks:
+      sparknet:
+        ipv4_address: 172.28.1.5 
 
 volumes:
   namenode:
