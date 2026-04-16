@@ -55,7 +55,7 @@ ENV JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
 
 # --- Hadoop --- 
 ARG HADOOP_VERSION=3.4.1
-ARG HADOOP_BASE_URL=https://downloads.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}
+ARG HADOOP_BASE_URL=https://dlcdn.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}
 ENV HADOOP_HOME=/opt/hadoop
 
 USER root
@@ -78,7 +78,7 @@ ENV PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
 # --- Hive 4.1.0 ---
 ARG HIVE_VERSION=4.1.0
-ARG HIVE_URL=https://downloads.apache.org/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz
+ARG HIVE_URL=https://dlcdn.apache.org/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz
 ENV HIVE_HOME=/opt/hive
 
 USER root
@@ -99,7 +99,7 @@ ENV HIVE_CONF_DIR=/etc/hive/conf
 
 # --- Tez 0.10.5 ---
 ARG TEZ_VERSION=0.10.5
-ARG TEZ_URL=https://downloads.apache.org/tez/${TEZ_VERSION}/apache-tez-${TEZ_VERSION}-bin.tar.gz
+ARG TEZ_URL=https://dlcdn.apache.org/tez/${TEZ_VERSION}/apache-tez-${TEZ_VERSION}-bin.tar.gz
 ENV TEZ_HOME=/opt/tez
 
 USER root

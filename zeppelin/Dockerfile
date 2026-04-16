@@ -8,7 +8,6 @@ ARG ZEPPELIN_URL=https://dlcdn.apache.org/zeppelin/zeppelin-${ZEPPELIN_VERSION}/
 ENV ZEPPELIN_HOME=/opt/zeppelin
 
 USER root
-# Instalujemy curl i tar, jeśli nie ma ich w obrazie worker
 RUN apt-get update && \
     apt-get install -y jq && \
     rm -rf /var/lib/apt/lists/*
@@ -21,11 +20,8 @@ RUN mkdir -p $ZEPPELIN_HOME && \
     rm /tmp/zeppelin.tgz && \
     chown -R $USERNAME:$GROUPNAME $ZEPPELIN_HOME
 
-# Tworzenie katalogu na notebooki
-RUN mkdir -p /home/hadoop/notebook && chown $USERNAME:$GROUPNAME /home/hadoop/notebook
-
 # ----------------------------------------------------
-# ETAP 4: Modyfikacja Konfiguracji Interpretera Spark
+# Modyfikacja Konfiguracji Interpretera Spark
 # ----------------------------------------------------
 # Plik: /opt/zeppelin/interpreter/spark/interpreter-setting.json
 RUN jq '.[0].properties."spark.master".defaultValue = "yarn" | \
@@ -36,7 +32,7 @@ RUN jq '.[0].properties."spark.master".defaultValue = "yarn" | \
     mv /tmp/spark-setting.json ${ZEPPELIN_HOME}/interpreter/spark/interpreter-setting.json
 
 # ----------------------------------------------------
-# ETAP 5: Modyfikacja Konfiguracji Interpretera JDBC
+# Modyfikacja Konfiguracji Interpretera JDBC
 # ----------------------------------------------------
 # Plik: /opt/zeppelin/interpreter/jdbc/interpreter-setting.json
 RUN jq '.[0].properties."default.url".defaultValue = "jdbc:mysql://metastore:3306/" | \
@@ -50,8 +46,16 @@ RUN jq '.[0].properties."default.url".defaultValue = "jdbc:mysql://metastore:330
 USER $USERNAME
 WORKDIR /home/hadoop
 
+RUN mkdir -p /home/$USERNAME/notebook && \
+    cp ${ZEPPELIN_HOME}/conf/zeppelin-site.xml.template ${ZEPPELIN_HOME}/conf/zeppelin-site.xml && \
+    (grep -q "zeppelin.notebook.dir" ${ZEPPELIN_HOME}/conf/zeppelin-site.xml || \
+     sed -i '/<\/configuration>/i \
+     <property><name>zeppelin.notebook.dir</name><value>/home/hadoop/notebook</value></property>' \
+     ${ZEPPELIN_HOME}/conf/zeppelin-site.xml)
+
 ENV ZEPPELIN_HOME=$ZEPPELIN_HOME
 ENV PATH=$ZEPPELIN_HOME/bin:$PATH 
 
+EXPOSE 8080
 # Uruchomienie Zeppelina
 CMD ["/opt/zeppelin/bin/zeppelin.sh"]
