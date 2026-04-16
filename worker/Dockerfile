@@ -78,7 +78,7 @@ ENV PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
 # --- Hive 4.1.0 ---
 ARG HIVE_VERSION=4.1.0
-ARG HIVE_URL=https://dlcdn.apache.org/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz
+ARG HIVE_URL=https://archive.apache.org/dist/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz
 ENV HIVE_HOME=/opt/hive
 
 USER root
@@ -99,7 +99,7 @@ ENV HIVE_CONF_DIR=/etc/hive/conf
 
 # --- Tez 0.10.5 ---
 ARG TEZ_VERSION=0.10.5
-ARG TEZ_URL=https://dlcdn.apache.org/tez/${TEZ_VERSION}/apache-tez-${TEZ_VERSION}-bin.tar.gz
+ARG TEZ_URL=https://archive.apache.org/dist/tez/${TEZ_VERSION}/apache-tez-${TEZ_VERSION}-bin.tar.gz
 ENV TEZ_HOME=/opt/tez
 
 USER root
@@ -117,7 +117,7 @@ ENV PATH=$TEZ_HOME/bin:$PATH
 
 # --- Spark ---
 ARG SPARK_VERSION=4.0.1
-ARG SPARK_URL=https://dlcdn.apache.org/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz
+ARG SPARK_URL=https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz
 ENV SPARK_HOME=/opt/spark
 
 USER root
